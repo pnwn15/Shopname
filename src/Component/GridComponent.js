@@ -79,24 +79,26 @@ const GridComponent = () => {
       {/* กรอบสินค้า */}
       <div className="lg:col-span-3 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4">
   {items1.map((item, index) => (
-    <div
-      key={item.id}
-      className={`flex items-center justify-center border gap-5 border-gray-300 p-6 shadow-sm transform transition-transform duration-500 ease-out opacity-0 animate-slide-up hover:bg-orange-600 hover:text-white`}
-      style={{ animationDelay: `${index * 150}ms` }}
-    >
-      {/* ไอคอน */}
-      <img
-        src={item.icon}
-        alt={item.title}
-        className="w-16 h-16 mb-4 object-contain transition-all duration-300 hover:filter hover:brightness-0 hover:invert"
-      />
-      {/* ชื่อสินค้า */}
-      <h2 className="text-sm font-semibold text-center">
-        {item.title}
-      </h2>
-    </div>
+ <div
+ key={item.id}
+ className={`flex flex-col items-center justify-center border gap-5 border-gray-300 p-6 shadow-sm transform transition-all duration-500 ease-out opacity-0 animate-slide-up hover:bg-orange-600 hover:text-white hover:border-orange-500`}
+ style={{ animationDelay: `${index * 150}ms` }}
+>
+ {/* ไอคอน */}
+ <img
+   src={item.icon}
+   alt={item.title}
+   className="w-16 h-16 mb-4 object-contain transition-all duration-300 filter transition-filter  hover:brightness-0 hover:invert"
+ />
+ {/* ชื่อสินค้า */}
+ <h2 className="text-sm font-semibold text-center transition-all duration-300 hover:text-white">
+   {item.title}
+ </h2>
+</div>
+
   ))}
 </div>
+
 
      {/* โฆษณาด้านข้าง */}
 <div className="relative border lg:w-80 md:w-full w-full border-gray-300 overflow-hidden h-[70vh] sm:h-[70vh] lg:h-[70vh]">

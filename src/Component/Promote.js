@@ -69,7 +69,7 @@ function Promote() {
   {products.map((product, index) => (
     <div
       key={product.id}
-      className={`w-28 h-28 border border-gray-300 rounded-lg shadow-lg gap-3 flex transform transition-all duration-500 opacity-0 animate-slide-up hover:scale-105 hover:shadow-xl`}
+      className={`w-28 h-28 border border-gray-300  shadow-lg gap-3 flex transform transition-all duration-500 opacity-0 animate-slide-up hover:scale-105 hover:shadow-xl`}
       style={{ animationDelay: `${index * 100}ms` }} // เพิ่ม delay ระหว่างแต่ละการ์ด
     >
       <img
@@ -92,7 +92,7 @@ function Promote() {
   {products1.map((product, index) => (
     <div
       key={product.id}
-      className={`w-28 h-28 border border-gray-300 rounded-lg shadow-lg gap-3 flex transform transition-all duration-500 opacity-0 animate-slide-up hover:scale-105 hover:shadow-xl`}
+      className={`w-28 h-28 border border-gray-300 shadow-lg gap-3 flex transform transition-all duration-500 opacity-0 animate-slide-up hover:scale-105 hover:shadow-xl`}
       style={{ animationDelay: `${index * 100}ms` }} // เพิ่ม delay ระหว่างแต่ละการ์ด
     >
       <img
