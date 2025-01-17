@@ -11,7 +11,7 @@ import FooterWithForm from './Component/FooterWithForm';
 function App() {
   return (
     <>
-    <div className='w-full h-full overflow-hidden'>
+    <div className='w-full h-full bg-white overflow-hidden'>
     <Navbar />
     <SlickBar />
     <GridComponent />
