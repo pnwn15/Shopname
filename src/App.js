@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Navbar from './Component/Navbar';
-import SlickBar from './Component/SlickBar';
-import GridComponent from './Component/GridComponent';
-import Product from './Component/Product';
-import Promote from './Component/Promote';
-import Card from './Component/Card';
 import FooterWithForm from './Component/FooterWithForm';
+import Shop from './Pages/Shop';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './Pages/Home';
 
 function App() {
   return (
     <>
-    <div className='w-full h-full bg-white overflow-hidden'>
-    <Navbar />
-    <SlickBar />
-    <GridComponent />
-    <Product />
-    <Promote />
-    <Card />
-    <FooterWithForm />
-    </div>
+      <Router>
+        <div className='w-full h-full bg-white overflow-hidden'>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Shop" element={<Shop />} />
+          </Routes>
+          <FooterWithForm />
+        </div>
+      </Router>
     </>
   );
 }

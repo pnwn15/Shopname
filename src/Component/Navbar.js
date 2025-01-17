@@ -13,8 +13,8 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
-    { name: "HOME", link: "#" },
-    { name: "SHOP", link: "#" },
+    { name: "HOME", link: "/" },
+    { name: "SHOP", link: "/Shop" },
     { name: "PAGES", link: "#" },
     { name: "BLOG", link: "#" },
     { name: "SALE", link: "#" },
