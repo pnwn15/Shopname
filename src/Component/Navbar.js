@@ -11,84 +11,127 @@ import {
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null); // สถานะสำหรับจัดการเมนู dropdown
 
   const menuItems = [
     { name: "HOME", link: "/" },
     { name: "SHOP", link: "/Shop" },
-    { name: "PAGES", link: "#" },
-    { name: "BLOG", link: "#" },
-    { name: "SALE", link: "#" },
+    { 
+      name: "PAGES", 
+      link: "#", 
+      dropdown: [
+        { name: "Page 1", link: "/page1" },
+        { name: "Page 2", link: "/page2" },
+        { name: "Page 3", link: "/page3" },
+        { name: "Page 4", link: "/page4" },
+        { name: "Page 5", link: "/page5" }
+      ]
+    },
+    { 
+      name: "BLOG", 
+      link: "#", 
+      dropdown: [
+        { name: "Blog 1", link: "/blog1" },
+        { name: "Blog 2", link: "/blog2" },
+        { name: "Blog 3", link: "/blog3" },
+        { name: "Blog 4", link: "/blog4" },
+        { name: "Blog 5", link: "/blog5" }
+      ]
+    },
+    { 
+      name: "SALE", 
+      link: "#", 
+      dropdown: [
+        { name: "Sale 1", link: "/sale1" },
+        { name: "Sale 2", link: "/sale2" },
+        { name: "Sale 3", link: "/sale3" },
+        { name: "Sale 4", link: "/sale4" },
+        { name: "Sale 5", link: "/sale5" }
+      ]
+    },
     { name: "BUY THEME!", link: "#" },
   ];
+
+  const handleDropdownClick = (index) => {
+    // หากคลิกที่เมนูเดิม ให้ปิด dropdown
+    if (openDropdown === index) {
+      setOpenDropdown(null);
+    } else {
+      // หากคลิกที่เมนูใหม่ ให้เปิด dropdown
+      setOpenDropdown(index);
+    }
+  };
 
   return (
     <header className="bg-white shadow-md">
       <div className="container mx-auto px-4 flex justify-between items-center py-3 border-b border-gray-200">
-        {/* Hamburger Menu for Mobile (Placed on the left side, next to the logo) */}
-        <button
-          className="md:hidden text-2xl text-gray-600"
-          onClick={() => setIsMenuOpen(!isMenuOpen)} // Toggle the menu state
-        >
-          {isMenuOpen ? <FiX /> : <FiMenu />}
-        </button>
+  {/* Hamburger Menu for Mobile */}
+  <button
+    className="md:hidden text-2xl text-gray-600 h-12 w-12 flex justify-center items-center"
+    onClick={() => setIsMenuOpen(!isMenuOpen)} // Toggle the menu state
+  >
+    {isMenuOpen ? <FiX /> : <FiMenu />}
+  </button>
 
-        {/* Logo and Hamburger together */}
-        <div className="flex items-center gap-4">
-          <img src="picture/logo.png" alt="Logo" className="h-8" />
-        </div>
+  {/* Logo */}
+  <div className="flex items-center gap-4">
+    <img src="picture/logo.png" alt="Logo" className="h-8" />
+  </div>
 
-        {/* Desktop Actions */}
-        <div className="md:flex flex items-center space-x-6 text-sm">
-          <button className="flex items-center space-x-1">
-            <FiUser className="text-xl block" />
-            <span className="hidden md:block">Login</span>
-          </button>
-          <button className="flex items-center space-x-1">
-            <FiHeart className="text-xl" />
-            <span className="hidden md:block">Wishlist</span>
-          </button>
-          <button className="flex items-center space-x-1">
-            <FiShoppingBag className="text-xl" />
-            <span className="hidden md:block">Cart</span>
-          </button>
-        </div>
-      </div>
+  {/* Desktop Actions */}
+  <div className="md:flex flex items-center space-x-6 text-sm">
+    <button className="flex items-center space-x-1">
+      <FiUser className="text-xl block" />
+      <span className="hidden md:block">Login</span>
+    </button>
+    <button className="flex items-center space-x-1">
+      <FiHeart className="text-xl" />
+      <span className="hidden md:block">Wishlist</span>
+    </button>
+    <button className="flex items-center space-x-1">
+      <FiShoppingBag className="text-xl" />
+      <span className="hidden md:block">Cart</span>
+    </button>
+  </div>
+</div>
 
-      {/* Mobile Menu - Slide from Left */}
+
+      {/* Mobile Menu */}
       <div
         className={`${
           isMenuOpen ? "left-0" : "-left-full"
-        } absolute top-0 z-10  bg-white shadow-md w-64 h-96 transition-all duration-300 ease-in-out`}
+        } absolute top-0 z-10 bg-white shadow-md w-64 h-auto transition-all duration-300 ease-in-out`}
       >
         <ul className="flex flex-col space-y-4 p-4">
           {menuItems.map((item, index) => (
-           <li key={index} className="relative group border border-gray-300 rounded-md">
-           <a
-             href={item.link}
-             className="flex items-center justify-between text-lg font-semibold py-2 px-4 w-full"
-           >
-             {item.name}
-             {item.dropdown && <FiChevronDown />}
-           </a>
-           {item.dropdown && (
-             <ul className="mt-2 ml-4 space-y-2">
-               {item.dropdown.map((subItem, subIndex) => (
-                 <li key={subIndex} className="border-b border-gray-200">
-                   <a
-                     href={subItem.link}
-                     className="block text-sm text-gray-700 hover:text-black py-2 px-4"
-                   >
-                     {subItem.name}
-                   </a>
-                 </li>
-               ))}
-             </ul>
-           )}
-         </li>
+            <li key={index} className="relative">
+              <a
+                href={item.link}
+                className="flex items-center justify-between text-lg font-semibold py-2 px-4 w-full"
+                onClick={() => item.dropdown && handleDropdownClick(index)} // เปิด/ปิด dropdown
+              >
+                {item.name}
+                {item.dropdown && <FiChevronDown />}
+              </a>
+              {item.dropdown && openDropdown === index && (
+                <ul className="mt-2 ml-4 space-y-2">
+                  {item.dropdown.map((subItem, subIndex) => (
+                    <li key={subIndex} className="border-b border-gray-200">
+                      <a
+                        href={subItem.link}
+                        className="block text-sm text-gray-700 hover:text-black py-2 px-4"
+                      >
+                        {subItem.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
           ))}
         </ul>
 
-        {/* Close button in mobile menu */}
+        {/* Close button */}
         <button
           className="absolute top-4 right-4 text-2xl text-gray-600"
           onClick={() => setIsMenuOpen(false)} // Close the menu when clicked
@@ -100,21 +143,21 @@ const Navbar = () => {
       {/* Desktop Navigation */}
       <div className="hidden md:block container mx-auto px-4 py-2">
         <nav className="flex justify-between items-center text-sm">
-          {/* Main Menu */}
           <ul className="flex space-x-6">
             {menuItems.map((item, index) => (
-              <li key={index} className="relative group">
+              <li key={index} className="relative">
                 <a
                   href={item.link}
                   className="font-semibold flex items-center space-x-1"
+                  onClick={() => item.dropdown && handleDropdownClick(index)} // เปิด/ปิด dropdown
                 >
                   <span>{item.name}</span>
                   {item.dropdown && (
                     <FiChevronDown className="text-sm text-gray-600 group-hover:text-gray-800" />
                   )}
                 </a>
-                {item.dropdown && (
-                  <ul className="absolute hidden group-hover:block bg-white shadow-md mt-2 w-40 text-black">
+                {item.dropdown && openDropdown === index && (
+                  <ul className="absolute bg-white shadow-md mt-2 w-40 text-black">
                     {item.dropdown.map((subItem, subIndex) => (
                       <li key={subIndex}>
                         <a
