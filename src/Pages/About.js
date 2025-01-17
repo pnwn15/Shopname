@@ -6,7 +6,7 @@ function About() {
 
         <section className="bg-gray-50">
             <div className='bg-gray-500 text-white p-4'>
-                Home -- Products
+                Home -- About Us
             </div>
             <div className='py-12'>
             {/* Section 1 */}

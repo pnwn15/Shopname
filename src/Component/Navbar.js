@@ -21,22 +21,15 @@ const Navbar = () => {
       link: "#", 
       dropdown: [
         { name: "About Us", link: "/About" },
-        { name: "Contact Us", link: "/page2" },
-        { name: "News", link: "/page3" },
+        { name: "Contact Us", link: "/Contact" },
+        { name: "News", link: "/Blog" },
         { name: "Wishlist", link: "/page4" },
         { name: "Delivary Info", link: "/page5" }
       ]
     },
     { 
       name: "BLOG", 
-      link: "#", 
-      dropdown: [
-        { name: "Blog 1", link: "/blog1" },
-        { name: "Blog 2", link: "/blog2" },
-        { name: "Blog 3", link: "/blog3" },
-        { name: "Blog 4", link: "/blog4" },
-        { name: "Blog 5", link: "/blog5" }
-      ]
+      link: "/Blog", 
     },
     { 
       name: "SALE", 
