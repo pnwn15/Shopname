@@ -1,5 +1,6 @@
 import React from 'react'
 import Slider from 'react-slick';
+import SlickBar from './SlickBar';
 function Product() {
     const settings = {
         dots: true,

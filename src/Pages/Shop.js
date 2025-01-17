@@ -1,4 +1,5 @@
 import React from 'react'
+import SlickBar from '../Component/SlickBar'
 
 function Shop() {
     const products = [
@@ -80,7 +81,8 @@ function Shop() {
       
   return (
     
-          <div className="bg-white">
+          <div className="bg-white ">
+            <SlickBar />
             <div className='bg-gray-500 text-white p-4'>
             Home -- Products
             </div>

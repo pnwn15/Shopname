@@ -20,11 +20,11 @@ const Navbar = () => {
       name: "PAGES", 
       link: "#", 
       dropdown: [
-        { name: "Page 1", link: "/page1" },
-        { name: "Page 2", link: "/page2" },
-        { name: "Page 3", link: "/page3" },
-        { name: "Page 4", link: "/page4" },
-        { name: "Page 5", link: "/page5" }
+        { name: "About Us", link: "/About" },
+        { name: "Contact Us", link: "/page2" },
+        { name: "News", link: "/page3" },
+        { name: "Wishlist", link: "/page4" },
+        { name: "Delivary Info", link: "/page5" }
       ]
     },
     { 
@@ -53,12 +53,10 @@ const Navbar = () => {
   ];
 
   const handleDropdownClick = (index) => {
-    // หากคลิกที่เมนูเดิม ให้ปิด dropdown
     if (openDropdown === index) {
-      setOpenDropdown(null);
+      setOpenDropdown(null); // ปิด dropdown หากคลิกซ้ำ
     } else {
-      // หากคลิกที่เมนูใหม่ ให้เปิด dropdown
-      setOpenDropdown(index);
+      setOpenDropdown(index); // เปิด dropdown
     }
   };
 
@@ -146,31 +144,40 @@ const Navbar = () => {
           <ul className="flex space-x-6">
             {menuItems.map((item, index) => (
               <li key={index} className="relative">
-                <a
-                  href={item.link}
-                  className="font-semibold flex items-center space-x-1"
-                  onClick={() => item.dropdown && handleDropdownClick(index)} // เปิด/ปิด dropdown
-                >
-                  <span>{item.name}</span>
-                  {item.dropdown && (
-                    <FiChevronDown className="text-sm text-gray-600 group-hover:text-gray-800" />
-                  )}
-                </a>
-                {item.dropdown && openDropdown === index && (
-                  <ul className="absolute bg-white shadow-md mt-2 w-40 text-black">
-                    {item.dropdown.map((subItem, subIndex) => (
-                      <li key={subIndex}>
-                        <a
-                          href={subItem.link}
-                          className="block px-4 py-2 hover:bg-gray-100"
-                        >
-                          {subItem.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
+              <a
+                href={item.link}
+                className="font-semibold flex items-center space-x-1"
+                onClick={(e) => {
+                  if (item.dropdown) {
+                    e.preventDefault(); // ป้องกันการโหลดหน้าใหม่เฉพาะ dropdown
+                    handleDropdownClick(index);
+                  }
+                }}
+              >
+                <span>{item.name}</span>
+                {item.dropdown && (
+                  <FiChevronDown
+                    className={`text-sm ml-1 ${openDropdown === index ? "rotate-180" : ""}`}
+                  />
                 )}
-              </li>
+              </a>
+              {item.dropdown && openDropdown === index && (
+                <ul className="absolute left-0 top-full bg-white shadow-md mt-2 w-40 text-black z-50">
+                  {item.dropdown.map((subItem, subIndex) => (
+                    <li key={subIndex}>
+                      <a
+                        href={subItem.link}
+                        className="block px-4 py-2 hover:bg-gray-100"
+                      >
+                        {subItem.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+            
+            
             ))}
           </ul>
           <ul className="flex space-x-6">
