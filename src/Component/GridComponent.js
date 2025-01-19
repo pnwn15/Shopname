@@ -38,7 +38,7 @@ const GridComponent = () => {
   ];
 
   const items1 = [
-    { id: 1, title: "Notebooks, Tablets", icon: "/picture/notebook.png" },
+    { id: 1, title: "Notebooks, Tablets", icon: "/picture/laptop.png" },
     { id: 2, title: "Software", icon: "/picture/software.png" },
     { id: 3, title: "Smartphones, GPS", icon: "/picture/smartphone.png" },
     { id: 4, title: "TV / Games", icon: "/picture/tv.png" },
@@ -75,7 +75,7 @@ const GridComponent = () => {
 </div>
 
     </div>
-    <div className="p-6 flex justify-center flex-wrap gap-6">
+    <div className="p-6 flex justify-center  flex-wrap gap-6">
       {/* กรอบสินค้า */}
       <div className="lg:col-span-3 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4">
   {items1.map((item, index) => (

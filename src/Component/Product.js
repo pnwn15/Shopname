@@ -107,7 +107,7 @@ function Product() {
   return (
     <div className="bg-white">
         <div className='flex flex-col justify-center'>
-   <div className="lg:mx-20  md:mx-20 px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+   <div className="lg:mx-20  md:mx-20 px-4 py-16 sm:px-6 sm:py-24  lg:px-8">
   <div className="flex items-center justify-between flex-wrap">
     <h2 className="text-xl font-medium tracking-tight text-gray-900">Our Product</h2>
     <div className="flex gap-5 flex-wrap">
